@@ -9,6 +9,9 @@ const expressLayouts = require('express-ejs-layouts');
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
+// Build in Middleware
+app.use(express.static('public'));
+
 // Aplication level middleware
 app.use(
     (res, req, next) => {
