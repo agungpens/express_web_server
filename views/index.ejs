@@ -1,0 +1,20 @@
+<h1>
+    halaman index
+</h1>
+
+<h2>Daftar Mahasiswa</h2>
+<!-- kondisi jika data masih kosong -->
+<% if (mahasiswa.length < 1) { %>
+    <p>Data Masih Kosong</p>
+    <% } %>
+        <!-- Menampilkan Data -->
+        <% mahasiswa.forEach(mhs=> { %>
+            <ul>
+                <li>Nama : <%= mhs.nama %>
+                </li>
+                <li>email : <%= mhs.email %>
+                </li>
+                <li>noHp : <%= mhs.noHp %>
+                </li>
+            </ul>
+            <% }) %>
