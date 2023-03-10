@@ -5,13 +5,17 @@ const port = 5000;
 
 const expressLayouts = require('express-ejs-layouts');
 
-
-
-
 // panggil ejs templating 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
+// Aplication level middleware
+app.use(
+    (res, req, next) => {
+        console.log("Time : " + Date.now());
+        next();
+    }
+)
 
 
 // respond with "hello world" when a GET request is made to the homepage
@@ -41,7 +45,8 @@ app.get('/', (req, res) => {
         title: 'Halaman Home',
         layout: 'layouts/main'
     }) // panggil file .ejs di folder views
-})
+});
+
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'Halaman About',
@@ -49,7 +54,7 @@ app.get('/about', (req, res) => {
     });
 });
 
-//route Json
+
 app.get('/contact', (req, res) => {
     // panggil file .ejs di folder views
     res.render('contact', {
