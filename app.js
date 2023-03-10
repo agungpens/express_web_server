@@ -1,14 +1,16 @@
 const express = require('express') // require express
 const app = express()
-
 const port = 5000;
-
 const expressLayouts = require('express-ejs-layouts');
+
+const morgan = require('morgan');
 
 // panggil ejs templating 
 app.set('view engine', 'ejs');
-app.use(expressLayouts);
 
+// Third Party Middle Ware
+app.use(expressLayouts);
+app.use(morgan('dev'));
 // Build in Middleware
 app.use(express.static('public'));
 
